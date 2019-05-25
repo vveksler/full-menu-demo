@@ -25,7 +25,9 @@ function fullMenu() {
     if (target.classList.contains("nav-main__link")) {
       const scroll_el = target.getAttribute("href");
       const html = document.querySelector("html");
-      const section = document.querySelector(scroll_el).offsetTop;
+      var section;
+      if (scroll_el !== "#")
+        section = document.querySelector(scroll_el).offsetTop;
 
       scrollTo(html, section, 600);
     }
