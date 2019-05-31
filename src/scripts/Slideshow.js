@@ -1,37 +1,43 @@
 // Slider
-/* 
-const slides = document.querySelectorAll("#slider .slider__item");
-let currentSlide = 0;
 
-function nextSlide() {
-  goToSlide(currentSlide + 1);
-}
+const slides = document.querySelectorAll(".slider__item");
 
-function previousSlide() {
-  goToSlide(currentSlide - 1);
-}
+(function(slides) {
+  let currentSlide = 0;
 
-function goToSlide(n) {
-  slides[currentSlide].classList.remove("showing");
-  currentSlide = (n + slides.length) % slides.length;
-  slides[currentSlide].classList.add("showing");
-}
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+    setAnimation(currentSlide, "slideInRight");
+  }
 
-var next = document.getElementById("next");
-var previous = document.getElementById("previous");
+  function previousSlide() {
+    goToSlide(currentSlide - 1);
+    setAnimation(currentSlide, "slideInLeft");
+  }
 
-next.addEventListener("click", function() {
-  nextSlide();
-});
+  function setAnimation(currentSlide, animation) {
+    slides[currentSlide].classList.add(animation);
+    setTimeout(() => {
+      slides[currentSlide].classList.remove(animation);
+    }, 1000);
+  }
 
-previous.addEventListener("click", function() {
-  previousSlide();
-});
- */
+  function goToSlide(n) {
+    slides[currentSlide].classList.remove("showing");
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add("showing");
+  }
 
-const items = $(".slider__item");
+  var next = document.getElementById("right");
+  var previous = document.getElementById("left");
 
-$(items).on("click", e => {
-  console.log(e);
-  
-})
+  next.addEventListener("click", function(e) {
+    e.preventDefault();
+    nextSlide();
+  });
+
+  previous.addEventListener("click", function(e) {
+    e.preventDefault();
+    previousSlide();
+  });
+})(slides);

@@ -1,0 +1,21 @@
+.modal__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.modal__btn {
+  padding: 10px;
+  background-color: aquamarine;
+  margin-right: 10px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: darken($color: aquamarine, $amount: 10%);
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

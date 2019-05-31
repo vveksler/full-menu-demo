@@ -1,4 +1,6 @@
 var slideIndex = 1;
+const dots = document.querySelectorAll(".slideshow__dot");
+
 showSlides(slideIndex);
 
 // Next/previous controls
@@ -12,9 +14,9 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  let i;
+  var slides = document.getElementsByClassName("slideshow__item");
+
   if (n > slides.length) {
     slideIndex = 1;
   }
@@ -27,6 +29,26 @@ function showSlides(n) {
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
+
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+
+[prev, next].forEach(element => {
+  element.addEventListener("click", e => {
+    if (e.target === prev) {
+      plusSlides(-1);
+    } else if (e.target === next) {
+      plusSlides(1);
+    }
+  });
+});
+
+dots.forEach((item, index) => {
+  item.addEventListener("click", e => {
+    currentSlide(index + 1);
+  });
+});

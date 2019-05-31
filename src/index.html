@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="stylesheet" href="styles/main.min.css" />
-    <!-- <script src="scripts/fullMenuJquery.js" defer></script> -->
+    <script src="scripts/fullMenuJquery.js" defer></script>
     <!-- <script src="scripts/fullMenuPureJS.js"></script> -->
     <!-- <script src="scripts/fullMenu-AnonymFunction.js" defer></script> -->
-
+    <!-- <script src="scripts/Slideshow.js" defer></script> -->
     <script src="scripts/Slideshow.js" defer></script>
+    <script src="scripts/Slideshow2.js" defer></script>
+    <script src="scripts/overlay.js" defer></script>
   </head>
   <body>
     <section class="section hero" id="hero">
@@ -20,11 +22,11 @@
       <h1 class="title">Second section</h1>
     </section>
     <section class="section slider" id="slider">
-      <div class="slider__content">
+      <div class="container slider__content">
         <a href="#" class="arrow arrow__left" id="left">←</a>
         <div class="slider__display">
           <ul class="slider__list">
-            <li class="slider__item">
+            <li class="slider__item showing">
               <h3 class="slider__title">
                 <p>Батончик</p>
                 <p>“Морские водоросли”</p>
@@ -54,40 +56,54 @@
       </div>
 
     </section>
-    <section class="section slider2" id="slider2">
-      <div class="slider__content">
-        <a href="#" class="arrow arrow__left" id="left">←</a>
-        <div class="slider__display">
-          <ul class="slider__list">
-            <li class="slider__item">
-              <h3 class="slider__title">
-                <p>Батончик</p>
-                <p>“Морские водоросли”</p>
-              </h3>
-            </li>
-            <li class="slider__item showing">
-              <h3 class="slider__title">
-                <p>Батончик</p>
-                <p>“Гранола виноград”</p>
-              </h3>
-            </li>
-            <li class="slider__item">
-              <h3 class="slider__title">
-                <p>Батончик</p>
-                <p>Батончик “Сникерс”</p>
-              </h3>
-            </li>
-            <li class="slider__item">
-              <h3 class="slider__title">
-                <p>Батончик</p>
-                <p>Батончик “Марс”</p>
-              </h3>
-            </li>
-          </ul>
-        </div>
-        <a href="#" class="arrow arrow__right" id="right">→</a>
-      </div>
+    <section class="section slideshow" id="slideshow">
+      <!-- Slideshow container -->
+      <div class="container slideshow__container">
+        <!-- Full-width images with number and caption text -->
+        <ul class="slideshow__list">
+          <li class="slideshow__item flipInX">
+            <div class="slideshow__title">1 / 3</div>
+            <img class="slideshow__img"
+              src="https://images.pexels.com/photos/912110/pexels-photo-912110.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              />
+            <div class="slideshow__text">Caption Text</div>
+          </li>
+          <li class="slideshow__item flipInX">
+            <div class="slideshow__title">2 / 3</div>
+            <img
+              src="https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              class="slideshow__img"
+              />
+            <div class="slideshow__text">Caption Two</div>
+          </li>
 
+          <li class="slideshow__item flipInX">
+            <div class="slideshow__title">3 / 3</div>
+            <img
+              src="https://images.pexels.com/photos/875858/pexels-photo-875858.png?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              class="slideshow__img"
+              />
+            <div class="slideshow__text">Caption Three</div>
+          </li>
+        </ul>
+        <!-- Next and previous buttons -->
+        <a class="slideshow__controls prev">&#10094;</a>
+        <a class="slideshow__controls next">&#10095;</a>
+        <!-- The dots/circles -->
+        <ul class="slideshow__dots">
+          <li class="slideshow__dot"></li>
+          <li class="slideshow__dot"></li>
+          <li class="slideshow__dot"></li>
+        </ul>
+      </div>
+    </section>
+    <section class="section modal" id="modal">
+      <div class="container modal__content">
+        <a href="#" class="modal__btn">Click me! 1</a>
+        <a href="#" class="modal__btn">Click me! 2</a>
+        <a href="#" class="modal__btn">Click me! 3</a>
+        <a href="#" class="modal__btn">Click me! 4</a>
+      </div>
     </section>
     <!--HAMBURGER MENU-->
     <a href="#" class="hamburger-menu-link" id="hamburgerMenu">
@@ -107,26 +123,35 @@
             <a href="#about" class="nav-main__link">О нас</a>
           </li>
           <li class="nav-main__item">
-            <a href="#slider" class="nav-main__link">Батончики</a>
+            <a href="#slider" class="nav-main__link">Слайдер1</a>
           </li>
           <li class="nav-main__item">
-            <a href="#" class="nav-main__link">Команда</a>
+            <a href="#slideshow" class="nav-main__link">Слайдер2</a>
           </li>
           <li class="nav-main__item">
-            <a href="#" class="nav-main__link">Меню</a>
-          </li>
-          <li class="nav-main__item">
-            <a href="#" class="nav-main__link">Отзывы</a>
-          </li>
-          <li class="nav-main__item">
-            <a href="#" class="nav-main__link">Как мы работаем</a>
-          </li>
-          <li class="nav-main__item">
-            <a href="#" class="nav-main__link">Контакты</a>
+            <a href="#modal" class="nav-main__link">Модальное окно</a>
           </li>
         </ul>
       </nav>
     </div>
+    <!--Overlay reviews-->
+    <script type="template" id="overlayTemplate">
+      <div class="overlay">
+        <div class="overlay__container">
+          <div class="overlay__close">
+            X
+          </div>
+          <div class="overlay__content">
+            <div class="overlay__title">
+              
+            </div>
+            <div class="overlay__text">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </body>
