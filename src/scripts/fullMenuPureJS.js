@@ -6,6 +6,7 @@ function fullMenu() {
   const body = document.querySelector("body");
   const overlay = document.querySelector("#hamburgerOverlay");
   const menu = document.querySelector("#hamburgerMenu");
+  const links = document.querySelectorAll(".nav-main__link");
   const classes = ["open", "active", "hidden"];
   const elements = [menu, overlay, body];
 
@@ -39,7 +40,7 @@ function fullMenu() {
       currentTime = 0,
       increment = 20;
 
-    var animateScroll = function() {
+    (function animateScroll() {
       currentTime += increment;
       var val = Math.easeInOutQuad(currentTime, start, change, duration);
 
@@ -49,8 +50,7 @@ function fullMenu() {
       } else {
         _toggleClass(elements, classes);
       }
-    };
-    animateScroll();
+    })();
   }
 
   //t = current time

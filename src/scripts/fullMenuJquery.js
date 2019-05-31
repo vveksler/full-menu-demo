@@ -8,6 +8,10 @@ const classes = ["open", "active", "hidden"];
 const elements = [menu, overlay, body];
 
 const _toggleClass = (element, className) => {
+  /* element.forEach(function(item, index) {
+    return $(item).toggleClass(className[index]);
+  }) */
+
   element.forEach((item, index) => $(item).toggleClass(className[index]));
 };
 
@@ -19,9 +23,10 @@ $(menu).on("click", e => {
 
 $(link).on("click", function(e) {
   e.preventDefault();
-  const scroll_el = $(this).attr("href");
+  const scroll_el = $(this).attr("href"); //#about
+  
 
-  if ($(scroll_el).length > 0) {
+  if (scroll_el !== "#") {
     $("html").animate({ scrollTop: $(scroll_el).offset().top }, 600, () => {
       _toggleClass(elements, classes);
     });

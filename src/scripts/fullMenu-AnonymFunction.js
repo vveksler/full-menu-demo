@@ -1,9 +1,17 @@
 // анонимная самовызывающаяся функция
 
-const fullMenu = (function(params) {
+const obj = {
+  overlay: "#hamburgerOverlay",
+  menu: "#hamburgerMenu"
+};
+
+const fullMenu = (function({
+  overlay: o = "#hamburgerOverlay",
+  menu: m = "#hamburgerMenu"
+}) {
   const body = document.querySelector("body");
-  const overlay = document.querySelector(params.overlay);
-  const menu = document.querySelector(params.menu);
+  const overlay = document.querySelector(o);
+  const menu = document.querySelector(m);
   const classes = ["open", "active", "hidden"];
   const elements = [menu, overlay, body];
 
@@ -34,9 +42,6 @@ const fullMenu = (function(params) {
   return {
     toggle: handleListeners
   };
-})({
-  overlay: "#hamburgerOverlay",
-  menu: "#hamburgerMenu"
-});
+})(obj);
 
 fullMenu.toggle();
