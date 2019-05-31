@@ -1,5 +1,5 @@
 // Slider
-
+/* 
 const slides = document.querySelectorAll("#slider .slider__item");
 let currentSlide = 0;
 
@@ -20,9 +20,18 @@ function goToSlide(n) {
 var next = document.getElementById("next");
 var previous = document.getElementById("previous");
 
-next.onclick = function() {
+next.addEventListener("click", function() {
   nextSlide();
-};
-previous.onclick = function() {
+});
+
+previous.addEventListener("click", function() {
   previousSlide();
-};
+});
+ */
+
+const items = $(".slider__item");
+
+$(items).on("click", e => {
+  console.log(e);
+  
+})
