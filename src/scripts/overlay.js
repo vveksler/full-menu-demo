@@ -1,4 +1,4 @@
-const sectionModal = document.querySelector(".modal");
+const sectionModal = document.querySelector("#modal");
 
 (function(modal) {
   const template = document.querySelector("#overlayTemplate").innerHTML;
@@ -37,7 +37,7 @@ function createOverlay(template) {
     }
   });
 
-  closeElement.addEventListener("click", e => {
+  closeElement.addEventListener("click", () => {
     body.removeChild(overlayElement);
     body.classList.remove("hidden");
   });
