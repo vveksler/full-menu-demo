@@ -12,7 +12,17 @@
 }
 
 .slideshow__item {
-  justify-content: center;
+  display: none;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInX;
+  animation-name: flipInX;
+  -webkit-animation-duration: 1.2s;
+  animation-duration: 1.2s;
+
+  &.active {
+    display: block;
+  }
 }
 
 /* Number text (1/3 etc) */
@@ -181,13 +191,4 @@
     -webkit-transform: perspective(400px);
     transform: perspective(400px);
   }
-}
-
-.flipInX {
-  -webkit-backface-visibility: visible !important;
-  backface-visibility: visible !important;
-  -webkit-animation-name: flipInX;
-  animation-name: flipInX;
-  -webkit-animation-duration: 1.2s;
-  animation-duration: 1.2s;
 }
