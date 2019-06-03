@@ -47,6 +47,7 @@
   display: flex;
   align-items: center;
   height: 100%;
+  padding: 0 12px;
 }
 
 .slider__display {
@@ -160,11 +161,11 @@
     margin: 0;
 
     &__left {
-      left: -3%;
+      left: -18px;
     }
 
     &__right {
-      right: -3%;
+      right: -18px;
     }
   }
 }
