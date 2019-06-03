@@ -1,8 +1,6 @@
-// Slider
+// Slider with animate css
 
-const slides = document.querySelectorAll(".slider__item");
-
-(function(slides) {
+export default function(slides) {
   let currentSlide = 0;
   var next = document.getElementById("right");
   var previous = document.getElementById("left");
@@ -40,4 +38,4 @@ const slides = document.querySelectorAll(".slider__item");
     currentSlide = (n + slides.length) % slides.length;
     slides[currentSlide].classList.add("showing");
   }
-})(slides);
+};

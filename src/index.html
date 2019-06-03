@@ -6,22 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="stylesheet" href="styles/main.min.css" />
-    <script src="scripts/fullMenuJquery.js" defer></script>
-    <!-- <script src="scripts/fullMenuPureJS.js"></script> -->
-    <!-- <script src="scripts/fullMenu-AnonymFunction.js" defer></script> -->
-    <!-- <script src="scripts/Slideshow.js" defer></script> -->
-    <script src="scripts/Slideshow.js" defer></script>
-    <script src="scripts/Slideshow2.js" defer></script>
-    <script src="scripts/overlay.js" defer></script>
+    <script src="scripts/main.bundle.js" defer></script>
   </head>
   <body>
     <section class="section hero" id="hero">
       <h1 class="title">First section</h1>
     </section>
-    <section class="section about" id="about">
-      <h1 class="title">Second section</h1>
-    </section>
-    <section class="section slider" id="slider">
+    <section class="section slider" id="slider-animate">
       <div class="container slider__content">
         <a href="#" class="arrow arrow__left" id="left">←</a>
         <div class="slider__display">
@@ -53,6 +44,42 @@
           </ul>
         </div>
         <a href="#" class="arrow arrow__right" id="right">→</a>
+      </div>
+
+    </section>
+    <section class="section slider" id="slider-vanillaJS">
+      <div class="container slider__content">
+        <div class="slider__display">
+          <ul class="slider__list">
+            <li class="slider__item">
+              <img class="slider__item-img"
+                src="https://article.images.consumerreports.org/prod/content/dam/CRO%20Images%202019/Magazine/04April/CR-Cars-InlineHero-ComingSoon-Toyota-Supra-2-19"
+                alt="">
+            </li>
+            <li class="slider__item">
+              <img class="slider__item-img"
+                src="https://www.topgear.com/sites/default/files/styles/16x9_1280w/public/cars-car/image/2018/04/img_6718.jpg?itok=ES-j2o4b"
+                alt="">
+            </li>
+            <li class="slider__item">
+              <img class="slider__item-img"
+                src="https://cdn.motor1.com/images/mgl/r8zVP/s1/tesla-roadster.jpg"
+                alt="">
+            </li>
+            <li class="slider__item">
+              <img class="slider__item-img"
+                src="https://cdn.motor1.com/images/mgl/jKwVo/s3/future-supercars-and-sports-cars.jpg"
+                alt="">
+            </li>
+            <li class="slider__item">
+              <img class="slider__item-img"
+                src="https://cdn.motor1.com/images/mgl/XeoVl/s4/renders-of-cars-with-tiny-wheels.jpg"
+                alt="">
+            </li>
+          </ul>
+        </div>
+        <a href="#" class="arrow arrow__left">←</a>
+        <a href="#" class="arrow arrow__right">→</a>
       </div>
 
     </section>
@@ -105,6 +132,49 @@
         <a href="#" class="modal__btn">Click me! 4</a>
       </div>
     </section>
+    <section class="section order-form" id="form">
+      <div class="container order-form__content">
+        <form class="form" id="submit-form">
+          <div class="form__inner">
+            <h2 class="order-form__title">
+              Оставить отзыв
+            </h2>
+            <div class="form__content">
+              <div class="form__row">
+                <label class="form__field">
+                  <span class="form__field-title">Ваше имя</span>
+                  <input type="text" name="name" class="form__input"
+                    placeholder="Андрей" required />
+                </label>
+                <label class="form__field">
+                  <span class="form__field-title">Телефон</span>
+                  <input type="text" name="phone" class="form__input"
+                    placeholder="89022348912" required />
+                </label>
+              </div>
+              <div class="form__row">
+                <label class="form__field form__field--textarea">
+                  <span class="form__field-title">Текст отзыва</span>
+                  <textarea name="comment" class="form__textarea"
+                    placeholder="Мне понравилось"></textarea>
+                </label>
+              </div>
+              <div class="form__row">
+                <div class="form__btns">
+                  <label for="send-btn" class="form__send-btn">
+                    <button class="visuallyHidden" type="submit"
+                      id="send-btn">
+                      Отправить
+                    </button>
+                    <span class="form__btn-custom">Отправить</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
     <!--HAMBURGER MENU-->
     <a href="#" class="hamburger-menu-link" id="hamburgerMenu">
       <span></span>
@@ -120,16 +190,21 @@
             <a href="#hero" class="nav-main__link">Главная</a>
           </li>
           <li class="nav-main__item">
-            <a href="#about" class="nav-main__link">О нас</a>
+            <a href="#slider-animate" class="nav-main__link">Слайдер с animate
+              css</a>
           </li>
           <li class="nav-main__item">
-            <a href="#slider" class="nav-main__link">Слайдер1</a>
+            <a href="#slideshow" class="nav-main__link">Слайдшоу с точками</a>
           </li>
           <li class="nav-main__item">
-            <a href="#slideshow" class="nav-main__link">Слайдер2</a>
+            <a href="#slider-vanillaJS" class="nav-main__link">Слайдер на
+              JavaScript</a>
           </li>
           <li class="nav-main__item">
             <a href="#modal" class="nav-main__link">Модальное окно</a>
+          </li>
+          <li class="nav-main__item">
+            <a href="#form" class="nav-main__link">Пример формы</a>
           </li>
         </ul>
       </nav>
@@ -143,7 +218,7 @@
           </div>
           <div class="overlay__content">
             <div class="overlay__title">
-              
+              Сообщение:
             </div>
             <div class="overlay__text">
               

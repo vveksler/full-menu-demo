@@ -44,4 +44,4 @@ const fullMenu = (function({
   };
 })(obj);
 
-fullMenu.toggle();
+export default fullMenu;

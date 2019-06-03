@@ -1,12 +1,8 @@
 // pure JavaScript
-
-document.addEventListener("DOMContentLoaded", fullMenu);
-
-function fullMenu() {
+export default function fullMenu() {
   const body = document.querySelector("body");
   const overlay = document.querySelector("#hamburgerOverlay");
   const menu = document.querySelector("#hamburgerMenu");
-  const links = document.querySelectorAll(".nav-main__link");
   const classes = ["open", "active", "hidden"];
   const elements = [menu, overlay, body];
 

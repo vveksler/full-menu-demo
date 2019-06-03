@@ -4,6 +4,8 @@ const $gp = require("gulp-load-plugins")();
 
 const browserSync = require("browser-sync").create();
 const reload = browserSync.reload;
+const webpack = require("webpack");
+const webpackConfig = require("./webpack.config.js");
 const moduleImporter = require("sass-module-importer");
 const del = require("del");
 
@@ -44,7 +46,16 @@ gulp.task("styles", () => {
   );
 });
 
-gulp.task("scripts", function() {
+gulp.task("scripts", () => {
+  return gulp
+    .src(`${SRC_DIR}/scripts/main.js`)
+    .pipe($gp.plumber())
+    .pipe($gp.webpack(webpackConfig, webpack))
+    .pipe(gulp.dest(`${DIST_DIR}/scripts`))
+    .pipe(reload({ stream: true }));
+});
+
+/* gulp.task("scripts", function() {
   return gulp
     .src(`${SRC_DIR}/scripts/*.js`)
     .pipe($gp.sourcemaps.init())
@@ -57,7 +68,7 @@ gulp.task("scripts", function() {
     .pipe($gp.sourcemaps.write("."))
     .pipe(gulp.dest(`${DIST_DIR}/scripts/`))
     .pipe(reload({ stream: true }));
-});
+}); */
 
 gulp.task("templates", () => {
   return gulp
