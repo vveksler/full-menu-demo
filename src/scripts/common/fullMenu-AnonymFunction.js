@@ -14,6 +14,7 @@ const fullMenu = (function({
   const menu = document.querySelector(m);
   const classes = ["open", "active", "hidden"];
   const elements = [menu, overlay, body];
+  const duration = 1000;
 
   const _toggleClass = (element, className) => {
     element.forEach((item, index) => $(item).toggleClass(className[index]));
@@ -32,7 +33,7 @@ const fullMenu = (function({
       if (target.classList.contains("nav-main__link")) {
         const scroll_el = target.getAttribute("href");
 
-        $("html").animate({ scrollTop: $(scroll_el).offset().top }, 600, () => {
+        $("html").animate({ scrollTop: $(scroll_el).offset().top }, duration, () => {
           _toggleClass(elements, classes);
         });
       }

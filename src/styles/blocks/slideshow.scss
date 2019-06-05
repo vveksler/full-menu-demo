@@ -13,6 +13,7 @@
 
 .slideshow__item {
   display: none;
+  
   -webkit-backface-visibility: visible !important;
   backface-visibility: visible !important;
   -webkit-animation-name: flipInX;

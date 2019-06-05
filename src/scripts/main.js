@@ -43,3 +43,9 @@ import submitForm from "./common/submit-form";
 
 const form = document.querySelector("#submit-form"); // Получение формы
 if(form) submitForm(form, overlay); // Если на странице есть нужный элемент, то выполнить функцию и передать ей форму и overlay
+
+/** One Page Scroll */
+import onePageScroll from "./common/one-page-scroll";
+
+const container = $(".one-page-scroll");
+if ($(container).length > 0) onePageScroll(container); 

@@ -12,6 +12,12 @@
 
 .nav-main__item {
   margin-left: 27px;
+
+  &.active {
+    .nav-main__link {
+      color: lighten($color: $green, $amount: 20%);
+    }
+  }
 }
 
 .nav-main__item:first-child {
