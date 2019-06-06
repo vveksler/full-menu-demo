@@ -1,12 +1,24 @@
 export default function onePageScroll(container) {
   const sections = $(".section"); // все секции по id
-  const navItems = $(".nav-fixed__item");
   const overlayMenuItems = $(".nav-main__item");
-
   const duration = 1000;
   let inScroll = false; // блокировка возможности проскролить во время анимации
 
-  //window.location.hash = "";
+  // Генерируем точки в навигационном меню
+  (function generateDots() {
+    sections.each(function(index, section) {
+      const item = $("<li>", {
+        attr: {
+          class: index === 0 ? "nav-fixed__item active" : "nav-fixed__item"
+        },
+        html: `<a href="#${section.id}" class="nav-fixed__link"></a>`
+      });
+
+      $(".nav-fixed__list").append(item);
+    });
+  })();
+
+  // window.location.hash = "";
 
   history.pushState("", document.title, window.location.pathname); // При первой загрузке удалит hash чтобы избежать багов
   setActiveItem(window.location.hash);
@@ -58,18 +70,6 @@ export default function onePageScroll(container) {
     }, duration);
   }
 
-  $(window).on("hashchange", e => {
-    const hash = e.originalEvent.newURL.substring(
-      e.originalEvent.newURL.indexOf("#")
-    ); // Удаляем URL до решетки
-    const newSectionId = $(`section[id='${hash.substring(1)}'`); // находим секцию, в которую хотим перейти
-
-    $(sections).removeClass("is-active"); // У всех секций удаляем класс is-active
-    $(newSectionId).addClass("is-active"); // Ставим класс is-active секции в которую перешли
-
-    setActiveItem(hash, [navItems, overlayMenuItems]);
-  });
-
   $("a").on("click", function(e) {
     const hash = this.hash;
     if (!this.hash) return;
@@ -100,5 +100,18 @@ export default function onePageScroll(container) {
         inScroll = false;
       }
     }
+  });
+
+  $(window).on("hashchange", e => {
+    const hash = e.originalEvent.newURL.substring(
+      e.originalEvent.newURL.indexOf("#")
+    ); // Удаляем URL до решетки
+    const navItems = $(".nav-fixed__item");
+    const newSectionId = $(`section[id='${hash.substring(1)}'`); // находим секцию, в которую хотим перейти
+
+    $(sections).removeClass("is-active"); // У всех секций удаляем класс is-active
+    $(newSectionId).addClass("is-active"); // Ставим класс is-active секции в которую перешли
+
+    setActiveItem(hash, [navItems, overlayMenuItems]);
   });
 }
